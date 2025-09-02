@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventPlan - Find the Perfect Event Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #ec4899;
+            --light-bg: #f8fafc;
+            --dark-text: #1e293b;
+            --light-text: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-text);
+            background-color: #fff;
+        }
+
+        /* Header Styles */
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.5rem;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--dark-text) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .btn-post-event {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            font-weight: 600;
+            color: white;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-post-event:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 0;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons .btn {
+            margin: 0.5rem;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .btn-primary-custom {
+            background-color: var(--primary-color);
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary-custom:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-outline-custom {
+            border: 2px solid white;
+            background-color: transparent;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .btn-outline-custom:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 5rem 0;
+            background-color: var(--light-bg);
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Event Categories */
+        .event-categories {
+            padding: 5rem 0;
+        }
+
+        .category-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            height: 100%;
+            border: 1px solid var(--border-color);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 0;
+            background-color: var(--light-bg);
+        }
+
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stars {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+        }
+
+        /* Trusted By */
+        .trusted-by {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .vendor-logo {
+            height: 60px;
+            margin: 1rem;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+
+        .vendor-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-text);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        footer a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .social-icon {
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            color: #cbd5e1;
+            transition: color 0.3s;
+        }
+
+        .social-icon:hover {
+            color: white;
+        }
+
+        /* Services Page */
+        .service-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            height: 100%;
+            border: 1px solid var(--border-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Login/Register Forms */
+        .auth-container {
+            max-width: 500px;
+            margin: 5rem auto;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            background-color: white;
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--light-text);
+            transition: all 0.3s;
+        }
+
+        .auth-tab.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25);
+        }
+
+        /* Dashboard Pages */
+        .dashboard-container {
+            padding: 2rem 0;
+        }
+
+        .dashboard-sidebar {
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            height: fit-content;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            color: var(--dark-text);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .dashboard-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Event Cards */
+        .event-card {
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .event-card:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-color: var(--primary-color);
+        }
+
+        .event-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .status-pending {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-quoted {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        /* Membership Plans */
+        .plan-card {
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .plan-card.featured {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .plan-features li:before {
+            content: "✓";
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Utility Classes */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--light-text);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-section p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#" onclick="showPage('home')">
+                <i class="bi bi-calendar-event"></i> EventPlan
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('home')">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('about')">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('services')">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('contact')">Contact</a>
+                    </li>
+                    <li class="nav-item" id="loginNavItem">
+                        <a class="nav-link" href="#" onclick="showPage('login')">Login</a>
+                    </li>
+                    <li class="nav-item" id="registerNavItem">
+                        <a class="nav-link" href="#" onclick="showPage('register')">Register</a>
+                    </li>
+                    <li class="nav-item dropdown" id="userDropdown" style="display: none;">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> <span id="userName"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="showUserDashboard()">My Dashboard</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="showCompanyDashboard()">Company Dashboard</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="#" class="btn btn-post-event ms-3" onclick="showPage('post-event')">Post Your Event</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page-section active">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <h1>Plan Your Dream Event — Get Instant Quotes from Trusted Event Companies</h1>
+                <p>Post your event once. Get multiple offers. Choose the best.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary-custom" onclick="showPage('post-event')">Post Your Event (Free)</a>
+                    <a href="#" class="btn btn-outline-custom" onclick="showPage('register')">Are You an Event Company? Join Us</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="how-it-works">
+            <div class="container">
+                <h2 class="section-title text-center">How It Works</h2>
+                <p class="section-subtitle text-center">Three simple steps to plan your perfect event</p>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <h3>Post Your Event</h3>
+                            <p>Tell us your event type, date, and location</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <h3>Receive Quotes</h3>
+                            <p>Event companies send you their best offers</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <h3>Choose & Celebrate</h3>
+                            <p>Pick the one you love and start planning</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Event Categories -->
+        <section class="event-categories">
+            <div class="container">
+                <h2 class="section-title text-center">Popular Event Categories</h2>
+                <p class="section-subtitle text-center">Find the perfect service for your event</p>
+                <div class="row g-4">
+                    <div class="col-md-4 col-lg-2">
+                        <div class="category-card">
+                            <div class="category-icon">🎂</div>
+                            <h5>Birthday Party</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-2">
+                        <div class="category-card">
+                            <div class="category-icon">💍</div>
+                            <h5>Wedding</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-2">
+                        <div class="category-card">
+                            <div class="category-icon">🏢</div>
+                            <h5>Corporate Event</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-2">
+                        <div class="category-card">
+                            <div class="category-icon">🎤</div>
+                            <h5>DJ & Music</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-2">
+                        <div class="category-card">
+                            <div class="category-icon">📸</div>
+                            <h5>Photography</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-2">
+                        <div class="category-card">
+                            <div class="category-icon">🍽</div>
+                            <h5>Catering</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <div class="container">
+                <h2 class="section-title text-center">What Our Customers Say</h2>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="mb-3">"I posted my wedding event and got 5 amazing offers in 2 hours! The platform made it so easy to compare and choose the best vendor for our budget."</p>
+                    <p class="fw-bold">— Neha, Ahmedabad</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trusted By -->
+        <section class="trusted-by">
+            <div class="container">
+                <h2 class="section-title">Trusted by Leading Event Companies</h2>
+                <div class="d-flex flex-wrap justify-content-center align-items-center">
+                    <img src="https://via.placeholder.com/150x60" alt="Vendor 1" class="vendor-logo">
+                    <img src="https://via.placeholder.com/150x60" alt="Vendor 2" class="vendor-logo">
+                    <img src="https://via.placeholder.com/150x60" alt="Vendor 3" class="vendor-logo">
+                    <img src="https://via.placeholder.com/150x60" alt="Vendor 4" class="vendor-logo">
+                    <img src="https://via.placeholder.com/150x60" alt="Vendor 5" class="vendor-logo">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Us Page -->
+    <div id="about" class="page-section">
+        <div class="container py-5">
+            <h1 class="section-title">About Us</h1>
+            <div class="row">
+                <div class="col-lg-8">
+                    <p class="lead">Welcome to EventPlan, your one-stop solution for finding the perfect event services.</p>
+                    <p>EventPlan was founded with a simple mission: to make event planning easier and more accessible for everyone. We understand that planning an event can be overwhelming, which is why we've created a platform that connects you with the best event professionals in your area.</p>
+                    <p>Whether you're planning a small birthday party or a large corporate event, our platform allows you to post your requirements and receive quotes from multiple vendors, making it easy to compare and choose the best option for your needs and budget.</p>
+                    <h3 class="mt-4 mb-3">Our Vision</h3>
+                    <p>To become the most trusted platform for event planning services, empowering both event organizers and service providers to create memorable experiences.</p>
+                    <h3 class="mt-4 mb-3">Our Mission</h3>
+                    <p>To simplify the event planning process by providing a transparent, efficient, and user-friendly platform that connects customers with the best event service providers.</p>
+                </div>
+                <div class="col-lg-4">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="About Us" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Page -->
+    <div id="services" class="page-section">
+        <div class="container py-5">
+            <h1 class="section-title text-center">Our Services</h1>
+            <p class="section-subtitle text-center">Find the perfect service for your event</p>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="service-icon">🎂</div>
+                        <h4>Birthday Parties</h4>
+                        <p>Make your birthday celebration unforgettable with our party planning services.</p>
+                        <button class="btn btn-primary-custom mt-3" onclick="showPage('post-event')">Get Started</button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="service-icon">💍</div>
+                        <h4>Weddings</h4>
+                        <p>Plan your dream wedding with our network of trusted wedding vendors.</p>
+                        <button class="btn btn-primary-custom mt-3" onclick="showPage('post-event')">Get Started</button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="service-icon">🏢</div>
+                        <h4>Corporate Events</h4>
+                        <p>Professional event planning services for all your corporate needs.</p>
+                        <button class="btn btn-primary-custom mt-3" onclick="showPage('post-event')">Get Started</button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="service-icon">🍽</div>
+                        <h4>Catering</h4>
+                        <p>Find the best caterers for your event, from casual to fine dining.</p>
+                        <button class="btn btn-primary-custom mt-3" onclick="showPage('post-event')">Get Started</button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="service-icon">📸</div>
+                        <h4>Photography</h4>
+                        <p>Capture your special moments with professional photographers.</p>
+                        <button class="btn btn-primary-custom mt-3" onclick="showPage('post-event')">Get Started</button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="service-icon">🎤</div>
+                        <h4>DJ & Music</h4>
+                        <p>Keep your guests entertained with the best DJs and musicians.</p>
+                        <button class="btn btn-primary-custom mt-3" onclick="showPage('post-event')">Get Started</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page-section">
+        <div class="container py-5">
+            <h1 class="section-title">Contact Us</h1>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3>Get in Touch</h3>
+                    <p>Have questions or need assistance? We're here to help!</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="bi bi-geo-alt-fill text-primary me-2"></i> 123 Event Street, Mumbai, India</li>
+                        <li class="mb-3"><i class="bi bi-telephone-fill text-primary me-2"></i> +91 98765 43210</li>
+                        <li class="mb-3"><i class="bi bi-envelope-fill text-primary me-2"></i> info@eventplan.com</li>
+                    </ul>
+                    <div class="mt-4">
+                        <h4>Follow Us</h4>
+                        <div class="d-flex gap-3 mt-3">
+                            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card shadow">
+                        <div class="card-body p-4">
+                            <h4 class="card-title mb-4">Send us a Message</h4>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Your Name</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <input type="text" class="form-control" id="subject" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary-custom">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Page -->
+    <div id="login" class="page-section">
+        <div class="container">
+            <div class="auth-container">
+                <h2 class="text-center mb-4">Login to Your Account</h2>
+                <div class="auth-tabs">
+                    <div class="auth-tab active" onclick="switchAuthTab('user')">User Login</div>
+                    <div class="auth-tab" onclick="switchAuthTab('company')">Company Login</div>
+                </div>
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">Email/Mobile</label>
+                        <input type="text" class="form-control" id="loginEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="loginPassword" required>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary-custom">Login</button>
+                    </div>
+                    <div class="text-center mt-3">
+                        <a href="#" class="text-decoration-none">Forgot Password?</a>
+                    </div>
+                    <div class="text-center mt-3">
+                        <p>Don't have an account? <a href="#" onclick="showPage('register')" class="text-decoration-none">Register</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Page -->
+    <div id="register" class="page-section">
+        <div class="container">
+            <div class="auth-container">
+                <h2 class="text-center mb-4">Create an Account</h2>
+                <div class="auth-tabs">
+                    <div class="auth-tab active" onclick="switchRegTab('user')">User Registration</div>
+                    <div class="auth-tab" onclick="switchRegTab('company')">Company Registration</div>
+                </div>
+                
+                <!-- User Registration Form -->
+                <form id="userRegForm">
+                    <div class="mb-3">
+                        <label for="userName" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="userName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="userEmail" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="userEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="userPhone" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="userPhone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="userPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="userPassword" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirmPassword" required>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary-custom">Register</button>
+                    </div>
+                    <div class="text-center mt-3">
+                        <p>Already have an account? <a href="#" onclick="showPage('login')" class="text-decoration-none">Login</a></p>
+                    </div>
+                </form>
+                
+                <!-- Company Registration Form -->
+                <form id="companyRegForm" style="display: none;">
+                    <div class="mb-3">
+                        <label for="companyName" class="form-label">Company Name</label>
+                        <input type="text" class="form-control" id="companyName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="companyEmail" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="companyEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="companyPhone" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="companyPhone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="services" class="form-label">Services Offered</label>
+                        <select class="form-select" id="services" multiple required>
+                            <option value="birthday">Birthday Parties</option>
+                            <option value="wedding">Weddings</option>
+                            <option value="corporate">Corporate Events</option>
+                            <option value="catering">Catering</option>
+                            <option value="photography">Photography</option>
+                            <option value="music">DJ & Music</option>
+                        </select>
+                        <div class="form-text">Hold Ctrl/Cmd to select multiple services</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="companyLogo" class="form-label">Company Logo</label>
+                        <input type="file" class="form-control" id="companyLogo" accept="image/*">
+                    </div>
+                    <div class="mb-3">
+                        <label for="companyPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="companyPassword" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmCompanyPassword" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirmCompanyPassword" required>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary-custom">Register</button>
+                    </div>
+                    <div class="text-center mt-3">
+                        <p>Already have an account? <a href="#" onclick="showPage('login')" class="text-decoration-none">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post Your Event Page -->
+    <div id="post-event" class="page-section">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow">
+                        <div class="card-body p-4">
+                            <h2 class="card-title mb-4">Post Your Event Requirements</h2>
+                            <form id="postEventForm">
+                                <div class="mb-3">
+                                    <label for="eventType" class="form-label">Event Type</label>
+                                    <select class="form-select" id="eventType" required>
+                                        <option value="" selected disabled>Select Event Type</option>
+                                        <option value="birthday">Birthday Party</option>
+                                        <option value="wedding">Wedding</option>
+                                        <option value="corporate">Corporate Event</option>
+                                        <option value="anniversary">Anniversary</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="eventCity" class="form-label">City</label>
+                                        <input type="text" class="form-control" id="eventCity" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="eventLocation" class="form-label">Location/Venue</label>
+                                        <input type="text" class="form-control" id="eventLocation" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="eventDate" class="form-label">Event Date</label>
+                                    <input type="date" class="form-control" id="eventDate" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="eventBudget" class="form-label">Budget Range</label>
+                                    <select class="form-select" id="eventBudget" required>
+                                        <option value="" selected disabled>Select Budget Range</option>
+                                        <option value="under10k">Under ₹10,000</option>
+                                        <option value="10k-25k">₹10,000 - ₹25,000</option>
+                                        <option value="25k-50k">₹25,000 - ₹50,000</option>
+                                        <option value="50k-1l">₹50,000 - ₹1,00,000</option>
+                                        <option value="1l-5l">₹1,00,000 - ₹5,00,000</option>
+                                        <option value="over5l">Over ₹5,00,000</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="eventNotes" class="form-label">Additional Notes</label>
+                                    <textarea class="form-control" id="eventNotes" rows="4" placeholder="Tell us more about your event requirements..."></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="eventImages" class="form-label">Upload Images (Optional)</label>
+                                    <input type="file" class="form-control" id="eventImages" multiple accept="image/*">
+                                    <div class="form-text">You can upload reference images or inspiration for your event</div>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-primary-custom">Post Event</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Dashboard - My Events -->
+    <div id="user-dashboard" class="page-section">
+        <div class="container dashboard-container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="dashboard-sidebar">
+                        <h4 class="mb-4">My Dashboard</h4>
+                        <ul class="sidebar-menu">
+                            <li><a href="#" class="active" onclick="showUserDashboard()">My Events</a></li>
+                            <li><a href="#" onclick="showPage('post-event')">Post New Event</a></li>
+                            <li><a href="#">My Profile</a></li>
+                            <li><a href="#">Settings</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="dashboard-content">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2>My Events</h2>
+                            <a href="#" class="btn btn-primary-custom" onclick="showPage('post-event')">Post New Event</a>
+                        </div>
+                        
+                        <div id="userEventsList">
+                            <div class="event-card">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h4>Wedding Ceremony</h4>
+                                        <p class="mb-1"><i class="bi bi-geo-alt me-2"></i> Mumbai, Maharashtra</p>
+                                        <p class="mb-1"><i class="bi bi-calendar me-2"></i> December 15, 2023</p>
+                                        <p class="mb-1"><i class="bi bi-currency-rupee me-2"></i> Budget: ₹5,00,000 - ₹10,00,000</p>
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="event-status status-quoted">3 Quotes Received</span>
+                                        <div class="mt-2">
+                                            <button class="btn btn-sm btn-outline-primary me-2">View Quotes</button>
+                                            <button class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="event-card">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h4>Birthday Party</h4>
+                                        <p class="mb-1"><i class="bi bi-geo-alt me-2"></i> Pune, Maharashtra</p>
+                                        <p class="mb-1"><i class="bi bi-calendar me-2"></i> November 20, 2023</p>
+                                        <p class="mb-1"><i class="bi bi-currency-rupee me-2"></i> Budget: ₹25,000 - ₹50,000</p>
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="event-status status-pending">Pending Quotes</span>
+                                        <div class="mt-2">
+                                            <button class="btn btn-sm btn-outline-primary me-2">View Quotes</button>
+                                            <button class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="noEventsMessage" style="display: none;" class="text-center py-5">
+                            <i class="bi bi-calendar-x" style="font-size: 3rem; color: var(--light-text);"></i>
+                            <h4 class="mt-3">No Events Posted Yet</h4>
+                            <p class="text-muted">Post your first event to get quotes from event companies</p>
+                            <a href="#" class="btn btn-primary-custom" onclick="showPage('post-event')">Post Your Event</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Company Dashboard - Browse Events -->
+    <div id="company-dashboard" class="page-section">
+        <div class="container dashboard-container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="dashboard-sidebar">
+                        <h4 class="mb-4">Company Dashboard</h4>
+                        <ul class="sidebar-menu">
+                            <li><a href="#" class="active" onclick="showCompanyDashboard()">Browse Events</a></li>
+                            <li><a href="#" onclick="showPage('membership')">Membership Plans</a></li>
+                            <li><a href="#">My Quotes</a></li>
+                            <li><a href="#">Company Profile</a></li>
+                            <li><a href="#">Settings</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="dashboard-content">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2>Browse Event Requirements</h2>
+                            <div>
+                                <div class="dropdown d-inline-block me-2">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                        Filter by Event Type
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">All Events</a></li>
+                                        <li><a class="dropdown-item" href="#">Birthday Party</a></li>
+                                        <li><a class="dropdown-item" href="#">Wedding</a></li>
+                                        <li><a class="dropdown-item" href="#">Corporate Event</a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown d-inline-block">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                        Filter by Location
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">All Locations</a></li>
+                                        <li><a class="dropdown-item" href="#">Mumbai</a></li>
+                                        <li><a class="dropdown-item" href="#">Delhi</a></li>
+                                        <li><a class="dropdown-item" href="#">Bangalore</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="companyEventsList">
+                            <div class="event-card">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h4>Wedding Ceremony</h4>
+                                        <p class="mb-1"><i class="bi bi-geo-alt me-2"></i> Mumbai, Maharashtra</p>
+                                        <p class="mb-1"><i class="bi bi-calendar me-2"></i> December 15, 2023</p>
+                                        <p class="mb-1"><i class="bi bi-currency-rupee me-2"></i> Budget: ₹5,00,000 - ₹10,00,000</p>
+                                        <p class="mb-1"><i class="bi bi-info-circle me-2"></i> Looking for complete wedding planning services including venue, catering, and decoration.</p>
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="event-status status-pending">Pending</span>
+                                        <div class="mt-2">
+                                            <button class="btn btn-sm btn-primary">Send Quote</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="event-card">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h4>Birthday Party</h4>
+                                        <p class="mb-1"><i class="bi bi-geo-alt me-2"></i> Pune, Maharashtra</p>
+                                        <p class="mb-1"><i class="bi bi-calendar me-2"></i> November 20, 2023</p>
+                                        <p class="mb-1"><i class="bi bi-currency-rupee me-2"></i> Budget: ₹25,000 - ₹50,000</p>
+                                        <p class="mb-1"><i class="bi bi-info-circle me-2"></i> Need decoration and catering for 50 people. Theme: Jungle Safari.</p>
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="event-status status-quoted">Quoted</span>
+                                        <div class="mt-2">
+                                            <button class="btn btn-sm btn-outline-secondary">View Details</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="event-card">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h4>Corporate Event</h4>
+                                        <p class="mb-1"><i class="bi bi-geo-alt me-2"></i> Bangalore, Karnataka</p>
+                                        <p class="mb-1"><i class="bi bi-calendar me-2"></i> January 10, 2024</p>
+                                        <p class="mb-1"><i class="bi bi-currency-rupee me-2"></i> Budget: ₹1,00,000 - ₹2,00,000</p>
+                                        <p class="mb-1"><i class="bi bi-info-circle me-2"></i> Annual company celebration for 200 employees. Need venue, catering, and entertainment.</p>
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="event-status status-pending">Pending</span>
+                                        <div class="mt-2">
+                                            <button class="btn btn-sm btn-primary">Send Quote</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="noEventsMessageCompany" style="display: none;" class="text-center py-5">
+                            <i class="bi bi-calendar-x" style="font-size: 3rem; color: var(--light-text);"></i>
+                            <h4 class="mt-3">No Events Available</h4>
+                            <p class="text-muted">Check back later for new event requirements</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Membership Plans Page -->
+    <div id="membership" class="page-section">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="text-center mb-5">
+                        <h1 class="section-title">Membership Plans</h1>
+                        <p class="section-subtitle">Choose the plan that best fits your business needs</p>
+                    </div>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="plan-card">
+                                <h3>Free</h3>
+                                <div class="plan-price">₹0<span class="fs-6 text-muted">/mo</span></div>
+                                <ul class="plan-features">
+                                    <li>Browse posted events only</li>
+                                    <li>Limited event visibility</li>
+                                    <li>Basic company profile</li>
+                                </ul>
+                                <button class="btn btn-outline-secondary w-100">Current Plan</button>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="plan-card featured">
+                                <div class="badge bg-primary position-absolute top-0 end-0 m-3">Popular</div>
+                                <h3>Pro</h3>
+                                <div class="plan-price">₹999<span class="fs-6 text-muted">/mo</span></div>
+                                <ul class="plan-features">
+                                    <li>View + Contact event posters</li>
+                                    <li>Limited featured spot</li>
+                                    <li>Enhanced company profile</li>
+                                    <li>Priority in search results</li>
+                                    <li>Basic analytics</li>
+                                </ul>
+                                <button class="btn btn-primary-custom w-100">Subscribe Now</button>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="plan-card">
+                                <h3>Premium</h3>
+                                <div class="plan-price">₹2499<span class="fs-6 text-muted">/mo</span></div>
+                                <ul class="plan-features">
+                                    <li>All Pro features included</li>
+                                    <li>Top listing in search results</li>
+                                    <li>Unlimited featured spots</li>
+                                    <li>Advanced analytics</li>
+                                    <li>Dedicated account manager</li>
+                                    <li>Early access to new events</li>
+                                </ul>
+                                <button class="btn btn-primary-custom w-100">Upgrade</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-5">
+                        <h4>Need a Custom Plan?</h4>
+                        <p class="text-muted">Contact us for enterprise solutions tailored to your business</p>
+                        <a href="#" class="btn btn-outline-primary">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5><i class="bi bi-calendar-event"></i> EventPlan</h5>
+                    <p>Your one-stop solution for finding the perfect event services. Connect with trusted event planners and make your dream event a reality.</p>
+                    <div class="mt-3">
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" onclick="showPage('home')">Home</a></li>
+                        <li><a href="#" onclick="showPage('about')">About Us</a></li>
+                        <li><a href="#" onclick="showPage('services')">Services</a></li>
+                        <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>For Users</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" onclick="showPage('post-event')">Post Event</a></li>
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">Event Ideas</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>For Companies</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" onclick="showPage('register')">Register</a></li>
+                        <li><a href="#" onclick="showPage('membership')">Membership Plans</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2023 EventPlan. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">Email: info@eventplan.com | Phone: +91 98765 43210</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLoginStatus();
+            initializeEventListeners();
+        });
+
+        // Check if user is logged in
+        function checkLoginStatus() {
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            if (loggedInUser) {
+                const user = JSON.parse(loggedInUser);
+                updateUIForLoggedInUser(user);
+            }
+        }
+
+        // Update UI for logged in user
+        function updateUIForLoggedInUser(user) {
+            document.getElementById('loginNavItem').style.display = 'none';
+            document.getElementById('registerNavItem').style.display = 'none';
+            document.getElementById('userDropdown').style.display = 'block';
+            document.getElementById('userName').textContent = user.name;
+        }
+
+        // Show specific page
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show the requested page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Special handling for login-required pages
+            if (pageId === 'post-event' || pageId === 'user-dashboard' || pageId === 'company-dashboard' || pageId === 'membership') {
+                const loggedInUser = localStorage.getItem('loggedInUser');
+                if (!loggedInUser) {
+                    showPage('login');
+                    return;
+                }
+                
+                const user = JSON.parse(loggedInUser);
+                if (pageId === 'user-dashboard' && user.type !== 'user') {
+                    alert('This page is only accessible to regular users.');
+                    showPage('home');
+                    return;
+                }
+                
+                if ((pageId === 'company-dashboard' || pageId === 'membership') && user.type !== 'company') {
+                    alert('This page is only accessible to company users.');
+                    showPage('home');
+                    return;
+                }
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Show user dashboard
+        function showUserDashboard() {
+            showPage('user-dashboard');
+        }
+
+        // Show company dashboard
+        function showCompanyDashboard() {
+            showPage('company-dashboard');
+        }
+
+        // Switch auth tab
+        function switchAuthTab(type) {
+            const tabs = document.querySelectorAll('#login .auth-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            if (type === 'user') {
+                tabs[0].classList.add('active');
+            } else {
+                tabs[1].classList.add('active');
+            }
+        }
+
+        // Switch registration tab
+        function switchRegTab(type) {
+            const tabs = document.querySelectorAll('#register .auth-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            if (type === 'user') {
+                tabs[0].classList.add('active');
+                document.getElementById('userRegForm').style.display = 'block';
+                document.getElementById('companyRegForm').style.display = 'none';
+            } else {
+                tabs[1].classList.add('active');
+                document.getElementById('userRegForm').style.display = 'none';
+                document.getElementById('companyRegForm').style.display = 'block';
+            }
+        }
+
+        // Initialize event listeners
+        function initializeEventListeners() {
+            // Login form
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                // Simple validation for demo purposes
+                if (email && password) {
+                    // Determine user type based on active tab
+                    const userType = document.querySelector('#login .auth-tab.active').textContent.includes('User') ? 'user' : 'company';
+                    
+                    // Create user object
+                    const user = {
+                        email: email,
+                        name: email.split('@')[0], // Simple name from email
+                        type: userType
+                    };
+                    
+                    // Save to localStorage
+                    localStorage.setItem('loggedInUser', JSON.stringify(user));
+                    
+                    // Update UI
+                    updateUIForLoggedInUser(user);
+                    
+                    // Redirect to appropriate dashboard
+                    if (userType === 'user') {
+                        showPage('user-dashboard');
+                    } else {
+                        showPage('company-dashboard');
+                    }
+                    
+                    // Show success message
+                    showNotification('Login successful!', 'success');
+                }
+            });
+            
+            // User registration form
+            document.getElementById('userRegForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('userName').value;
+                const email = document.getElementById('userEmail').value;
+                const phone = document.getElementById('userPhone').value;
+                const password = document.getElementById('userPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                if (password !== confirmPassword) {
+                    showNotification('Passwords do not match!', 'error');
+                    return;
+                }
+                
+                // Create user object
+                const user = {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    type: 'user'
+                };
+                
+                // Save to localStorage
+                localStorage.setItem('loggedInUser', JSON.stringify(user));
+                
+                // Update UI
+                updateUIForLoggedInUser(user);
+                
+                // Redirect to user dashboard
+                showPage('user-dashboard');
+                
+                // Show success message
+                showNotification('Registration successful!', 'success');
+            });
+            
+            // Company registration form
+            document.getElementById('companyRegForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const companyName = document.getElementById('companyName').value;
+                const email = document.getElementById('companyEmail').value;
+                const phone = document.getElementById('companyPhone').value;
+                const password = document.getElementById('companyPassword').value;
+                const confirmPassword = document.getElementById('confirmCompanyPassword').value;
+                
+                if (password !== confirmPassword) {
+                    showNotification('Passwords do not match!', 'error');
+                    return;
+                }
+                
+                // Create user object
+                const user = {
+                    name: companyName,
+                    email: email,
+                    phone: phone,
+                    type: 'company'
+                };
+                
+                // Save to localStorage
+                localStorage.setItem('loggedInUser', JSON.stringify(user));
+                
+                // Update UI
+                updateUIForLoggedInUser(user);
+                
+                // Redirect to company dashboard
+                showPage('company-dashboard');
+                
+                // Show success message
+                showNotification('Registration successful!', 'success');
+            });
+            
+            // Post event form
+            document.getElementById('postEventForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const eventType = document.getElementById('eventType').value;
+                const city = document.getElementById('eventCity').value;
+                const location = document.getElementById('eventLocation').value;
+                const date = document.getElementById('eventDate').value;
+                const budget = document.getElementById('eventBudget').value;
+                const notes = document.getElementById('eventNotes').value;
+                
+                // Create event object
+                const event = {
+                    type: eventType,
+                    city: city,
+                    location: location,
+                    date: date,
+                    budget: budget,
+                    notes: notes,
+                    status: 'pending'
+                };
+                
+                // Get existing events or create empty array
+                let events = JSON.parse(localStorage.getItem('userEvents')) || [];
+                
+                // Add new event
+                events.push(event);
+                
+                // Save to localStorage
+                localStorage.setItem('userEvents', JSON.stringify(events));
+                
+                // Show success message
+                showNotification('Event posted successfully!', 'success');
+                
+                // Reset form
+                document.getElementById('postEventForm').reset();
+                
+                // Redirect to user dashboard
+                setTimeout(() => {
+                    showPage('user-dashboard');
+                    updateUserEventsList();
+                }, 1500);
+            });
+        }
+
+        // Update user events list
+        function updateUserEventsList() {
+            const events = JSON.parse(localStorage.getItem('userEvents')) || [];
+            const eventsList = document.getElementById('userEventsList');
+            const noEventsMessage = document.getElementById('noEventsMessage');
+            
+            if (events.length === 0) {
+                eventsList.style.display = 'none';
+                noEventsMessage.style.display = 'block';
+            } else {
+                eventsList.style.display = 'block';
+                noEventsMessage.style.display = 'none';
+                
+                // Clear existing events
+                eventsList.innerHTML = '';
+                
+                // Add each event to the list
+                events.forEach((event, index) => {
+                    const eventCard = document.createElement('div');
+                    eventCard.className = 'event-card';
+                    
+                    // Format event type for display
+                    let eventTypeDisplay = '';
+                    switch(event.type) {
+                        case 'birthday': eventTypeDisplay = 'Birthday Party'; break;
+                        case 'wedding': eventTypeDisplay = 'Wedding'; break;
+                        case 'corporate': eventTypeDisplay = 'Corporate Event'; break;
+                        case 'anniversary': eventTypeDisplay = 'Anniversary'; break;
+                        default: eventTypeDisplay = 'Other Event';
+                    }
+                    
+                    // Format budget for display
+                    let budgetDisplay = '';
+                    switch(event.budget) {
+                        case 'under10k': budgetDisplay = 'Under ₹10,000'; break;
+                        case '10k-25k': budgetDisplay = '₹10,000 - ₹25,000'; break;
+                        case '25k-50k': budgetDisplay = '₹25,000 - ₹50,000'; break;
+                        case '50k-1l': budgetDisplay = '₹50,000 - ₹1,00,000'; break;
+                        case '1l-5l': budgetDisplay = '₹1,00,000 - ₹5,00,000'; break;
+                        case 'over5l': budgetDisplay = 'Over ₹5,00,000'; break;
+                        default: budgetDisplay = 'Not specified';
+                    }
+                    
+                    // Format date for display
+                    const eventDate = new Date(event.date);
+                    const formattedDate = eventDate.toLocaleDateString('en-IN', { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                    });
+                    
+                    // Set status display
+                    let statusDisplay = '';
+                    let statusClass = '';
+                    if (event.status === 'pending') {
+                        statusDisplay = 'Pending Quotes';
+                        statusClass = 'status-pending';
+                    } else {
+                        statusDisplay = `${event.quotesCount || 0} Quotes Received`;
+                        statusClass = 'status-quoted';
+                    }
+                    
+                    eventCard.innerHTML = `
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h4>${eventTypeDisplay}</h4>
+                                <p class="mb-1"><i class="bi bi-geo-alt me-2"></i> ${event.location}, ${event.city}</p>
+                                <p class="mb-1"><i class="bi bi-calendar me-2"></i> ${formattedDate}</p>
+                                <p class="mb-1"><i class="bi bi-currency-rupee me-2"></i> Budget: ${budgetDisplay}</p>
+                            </div>
+                            <div class="text-end">
+                                <span class="event-status ${statusClass}">${statusDisplay}</span>
+                                <div class="mt-2">
+                                    <button class="btn btn-sm btn-outline-primary me-2">View Quotes</button>
+                                    <button class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    eventsList.appendChild(eventCard);
+                });
+            }
+        }
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('loggedInUser');
+            document.getElementById('loginNavItem').style.display = 'block';
+            document.getElementById('registerNavItem').style.display = 'block';
+            document.getElementById('userDropdown').style.display = 'none';
+            showPage('home');
+            showNotification('You have been logged out successfully.', 'info');
+        }
+
+        // Show notification
+        function showNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `alert alert-${type === 'error' ? 'danger' : type === 'success' ? 'success' : 'info'} position-fixed`;
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.zIndex = '9999';
+            notification.style.minWidth = '300px';
+            notification.textContent = message;
+            
+            // Add to body
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
